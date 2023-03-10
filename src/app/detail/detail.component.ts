@@ -11,7 +11,7 @@ import { ITodo } from '../shared/interfaces/todo.interface';
   template: `
     <ng-container *ngIf="todo$ | async as todo">
       <ion-header>
-        <ion-toolbar>
+        <ion-toolbar color="primary">
           <ion-title>{{ todo.title }}</ion-title>
           <ion-buttons slot="start">
             <ion-back-button defaultHref="/home"></ion-back-button>

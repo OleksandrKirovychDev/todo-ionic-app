@@ -12,21 +12,36 @@ import { ITodo } from '../../shared/interfaces/todo.interface';
 
 @Component({
   selector: 'app-todo-form',
+  styles: [
+    `
+      ion-card-title {
+        padding-left: 20px;
+      }
+
+      ion-card-content {
+        padding-top: 0;
+      }
+    `,
+  ],
   template: `
     <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
-      <ion-input
-        type="text"
-        formControlName="title"
-        placeholder="title..."
-      ></ion-input>
-      <ion-input
-        type="text"
-        formControlName="description"
-        placeholder="description..."
-      ></ion-input>
-      <ion-button type="submit" [disabled]="todoForm.invalid"
-        >Save Todo</ion-button
-      >
+      <ion-card-content>
+        <ion-input
+          type="text"
+          formControlName="title"
+          placeholder="title..."
+        ></ion-input>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-input
+          type="text"
+          formControlName="description"
+          placeholder="description..."
+        ></ion-input>
+        <ion-button expand="full" type="submit" [disabled]="todoForm.invalid"
+          >Save Todo</ion-button
+        >
+      </ion-card-content>
     </form>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
