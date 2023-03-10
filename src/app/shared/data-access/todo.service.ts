@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { ITodo } from '../interfaces/todo.interface';
 
 @Injectable({
@@ -11,9 +11,15 @@ export class TodoService {
   public get todos$() {
     return this._todos$.asObservable();
   }
-  
+
   public addTodo(todo: ITodo) {
     const newTodos = [...this._todos$.value, todo];
     this._todos$.next(newTodos);
+  }
+
+  public getTodoById(id: string) {
+    return this.todos$.pipe(
+      map((todos) => todos.find((todo) => todo.id === id))
+    );
   }
 }
